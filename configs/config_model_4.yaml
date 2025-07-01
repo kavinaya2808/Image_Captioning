@@ -1,0 +1,27 @@
+model:
+  name: model_4               # 👈 updated to model_4
+  parameters:
+    embedding_dim: 256        # increased embedding_dim as suggested
+    hidden_dim: 512           # new param for hidden_dim
+    num_layers: 1             # reduced num_layers to 1 (can experiment later)
+
+optimizer:
+  lr: 1.0e-3                 # increased learning rate from 1e-4 to 1e-3
+
+vocabulary:
+  captions_file_path: "./flickr8k/vocabulary_captions.txt"
+
+data:
+  train:
+    images_folder_path: "./flickr8k/train_images"
+    captions_file_path: "./flickr8k/train_captions.txt"
+    batch_size: 64           # keep batch size 64 to avoid OOM
+  val:
+    images_folder_path: "./flickr8k/val_images"
+    captions_file_path: "./flickr8k/val_captions.txt"
+    batch_size: 64
+
+num_workers: 0               # keep 0 for stability on your system
+
+training:
+  epochs: 2               # train longer than previous (2 epochs)

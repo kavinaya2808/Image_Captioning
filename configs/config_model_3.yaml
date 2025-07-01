@@ -1,0 +1,23 @@
+model:
+  name: model_3              # 👈 must match your model_3.py filename
+  parameters:
+    embedding_dim: 128
+    num_layers: 2            # You can later experiment with 1 or 3
+
+optimizer:
+  lr: 1.0e-4
+
+vocabulary:
+  captions_file_path: "./flickr8k/vocabulary_captions.txt"
+
+data:
+  train:
+    images_folder_path: "./flickr8k/train_images"
+    captions_file_path: "./flickr8k/train_captions.txt"
+    batch_size: 64           # 👈 changed from 256 to avoid OOM for DINOv2
+  val:
+    images_folder_path: "./flickr8k/val_images"
+    captions_file_path: "./flickr8k/val_captions.txt"
+    batch_size: 64           # 👈 same here
+
+num_workers: 0               # 👈 critical for UBELIX to avoid DataLoader crash
